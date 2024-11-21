@@ -1,0 +1,8 @@
+
+CondaError: Run 'conda init' before 'conda activate'
+
+/home/m1/23CS60R76/miniconda3/envs/mtp_hms10_env/lib/python3.12/site-packages/torch/cuda/__init__.py:654: UserWarning: Can't initialize NVML
+  warnings.warn("Can't initialize NVML")
+True
+Number of parameters: 303975430
+torch.Size([2, 6])

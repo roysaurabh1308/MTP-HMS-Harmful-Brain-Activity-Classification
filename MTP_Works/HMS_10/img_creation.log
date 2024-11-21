@@ -1,0 +1,12 @@
+
+CondaError: Run 'conda init' before 'conda activate'
+
+Total Samples: 106800
+
+Processing EEG-ID:1628180742 with offset:0.0
+Image Shape: (518, 518, 1)
+Traceback (most recent call last):
+  File "/home/m1/23CS60R76/MTP_Works/HMS_10/createImages.py", line 97, in <module>
+    raw_50s_imgs = raw_50s_imgs.transpose(1, 2).transpose(1, 3).contiguous()
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: axes don't match array

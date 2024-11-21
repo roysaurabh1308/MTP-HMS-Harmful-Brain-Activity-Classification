@@ -1,0 +1,70 @@
+
+CondaError: Run 'conda init' before 'conda activate'
+
+W0916 16:06:19.329000 140629266437952 torch/distributed/run.py:779] 
+W0916 16:06:19.329000 140629266437952 torch/distributed/run.py:779] *****************************************
+W0916 16:06:19.329000 140629266437952 torch/distributed/run.py:779] Setting OMP_NUM_THREADS environment variable for each process to be 1 in default, to avoid your system being overloaded, please further tune the variable for optimal performance in your application as needed. 
+W0916 16:06:19.329000 140629266437952 torch/distributed/run.py:779] *****************************************
+Start running basic DDP example on rank 1.
+Start running basic DDP example on rank 0.
+[rank0]: Traceback (most recent call last):
+[rank0]:   File "/home/m1/23CS60R76/MTP_Works/HMS_10/kaggle_hms-main/code/run_train.py", line 59, in <module>
+[rank0]:     dist.barrier()
+[rank0]:   File "/home/m1/23CS60R76/miniconda3/envs/mtp_hms10_env/lib/python3.12/site-packages/torch/distributed/c10d_logger.py", line 79, in wrapper
+[rank0]:     return func(*args, **kwargs)
+[rank0]:            ^^^^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/home/m1/23CS60R76/miniconda3/envs/mtp_hms10_env/lib/python3.12/site-packages/torch/distributed/distributed_c10d.py", line 3936, in barrier
+[rank0]:     work = default_pg.barrier(opts=opts)
+[rank0]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]: torch.distributed.DistBackendError: NCCL error in: /opt/conda/conda-bld/pytorch_1724789560443/work/torch/csrc/distributed/c10d/NCCLUtils.hpp:275, unhandled system error (run with NCCL_DEBUG=INFO for details), NCCL version 2.20.5
+[rank0]: ncclSystemError: System call (e.g. socket, malloc) or external library call failed or device error. 
+[rank0]: Last error:
+[rank0]: nvmlInit_v2() failed: Driver/library version mismatch
+[rank1]: Traceback (most recent call last):
+[rank1]:   File "/home/m1/23CS60R76/MTP_Works/HMS_10/kaggle_hms-main/code/run_train.py", line 59, in <module>
+[rank1]:     dist.barrier()
+[rank1]:   File "/home/m1/23CS60R76/miniconda3/envs/mtp_hms10_env/lib/python3.12/site-packages/torch/distributed/c10d_logger.py", line 79, in wrapper
+[rank1]:     return func(*args, **kwargs)
+[rank1]:            ^^^^^^^^^^^^^^^^^^^^^
+[rank1]:   File "/home/m1/23CS60R76/miniconda3/envs/mtp_hms10_env/lib/python3.12/site-packages/torch/distributed/distributed_c10d.py", line 3936, in barrier
+[rank1]:     work = default_pg.barrier(opts=opts)
+[rank1]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank1]: torch.distributed.DistBackendError: NCCL error in: /opt/conda/conda-bld/pytorch_1724789560443/work/torch/csrc/distributed/c10d/NCCLUtils.hpp:275, unhandled system error (run with NCCL_DEBUG=INFO for details), NCCL version 2.20.5
+[rank1]: ncclSystemError: System call (e.g. socket, malloc) or external library call failed or device error. 
+[rank1]: Last error:
+[rank1]: nvmlInit_v2() failed: Driver/library version mismatch
+[rank0]:[W916 16:07:56.233177837 ProcessGroupNCCL.cpp:1168] Warning: WARNING: process group has NOT been destroyed before we destruct ProcessGroupNCCL. On normal program exit, the application should call destroy_process_group to ensure that any pending NCCL operations have finished in this process. In rare cases this process can exit before this point and block the progress of another member of the process group. This constraint has always been present,  but this warning has only been added since PyTorch 2.4 (function operator())
+W0916 16:08:06.892000 140629266437952 torch/distributed/elastic/multiprocessing/api.py:858] Sending process 433322 closing signal SIGTERM
+E0916 16:08:07.307000 140629266437952 torch/distributed/elastic/multiprocessing/api.py:833] failed (exitcode: 1) local_rank: 0 (pid: 433321) of binary: /home/m1/23CS60R76/miniconda3/envs/mtp_hms10_env/bin/python
+Traceback (most recent call last):
+  File "/home/m1/23CS60R76/miniconda3/envs/mtp_hms10_env/bin/torchrun", line 33, in <module>
+    sys.exit(load_entry_point('torch==2.4.1', 'console_scripts', 'torchrun')())
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/m1/23CS60R76/miniconda3/envs/mtp_hms10_env/lib/python3.12/site-packages/torch/distributed/elastic/multiprocessing/errors/__init__.py", line 348, in wrapper
+    return f(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^
+  File "/home/m1/23CS60R76/miniconda3/envs/mtp_hms10_env/lib/python3.12/site-packages/torch/distributed/run.py", line 901, in main
+    run(args)
+  File "/home/m1/23CS60R76/miniconda3/envs/mtp_hms10_env/lib/python3.12/site-packages/torch/distributed/run.py", line 892, in run
+    elastic_launch(
+  File "/home/m1/23CS60R76/miniconda3/envs/mtp_hms10_env/lib/python3.12/site-packages/torch/distributed/launcher/api.py", line 133, in __call__
+    return launch_agent(self._config, self._entrypoint, list(args))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/m1/23CS60R76/miniconda3/envs/mtp_hms10_env/lib/python3.12/site-packages/torch/distributed/launcher/api.py", line 264, in launch_agent
+    raise ChildFailedError(
+torch.distributed.elastic.multiprocessing.errors.ChildFailedError: 
+============================================================
+code/run_train.py FAILED
+------------------------------------------------------------
+Failures:
+  <NO_OTHER_FAILURES>
+------------------------------------------------------------
+Root Cause (first observed failure):
+[0]:
+  time      : 2024-09-16_16:08:06
+  host      : gnode6
+  rank      : 0 (local_rank: 0)
+  exitcode  : 1 (pid: 433321)
+  error_file: <N/A>
+  traceback : To enable traceback see: https://pytorch.org/docs/stable/elastic/errors.html
+============================================================
